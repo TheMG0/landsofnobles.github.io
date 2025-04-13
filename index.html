@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lands Of Nobles - Single Full Background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #2a312a;
+            color: #cccccc;
+            line-height: 1.6;
+            background-image: url('materialy/grafika tlo.png');
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-size: 100% auto;
+            background-attachment: scroll;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: #cccccc;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #ffffff;
+        }
+
+        ul { list-style: none; }
+
+        button {
+            background: none; border: none; padding: 0; cursor: pointer; color: #cccccc;
+        }
+
+        .site-header {
+            position: absolute; top: 0; left: 0; width: 100%; z-index: 10; padding: 15px 0;
+        }
+        .header-container {
+            max-width: 1200px; margin: 0 auto; padding: 0 30px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .header-icon {
+            background-color: rgba(40, 40, 40, 0.8); border-radius: 50%; padding: 8px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid #555;
+        }
+        .header-icon img {
+            width: 20px; height: 20px; filter: brightness(0) invert(0.8);
+        }
+        .main-nav ul { display: flex; }
+        .main-nav li { margin-left: 10px; }
+        .main-nav a {
+            display: block; padding: 8px 20px; background-color: rgba(40, 40, 40, 0.8); border-radius: 20px; font-weight: bold; font-size: 0.9em; border: 1px solid #555; transition: background-color 0.3s ease;
+        }
+        .main-nav a:hover { background-color: rgba(60, 60, 60, 0.9); color: #fff; }
+
+        .hero {
+            height: 60vh; min-height: 450px;
+            /* No background-image here anymore - it shows the body background */
+            display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 80px;
+            /* Optional: add a slight overlay if text/logo is hard to read */
+            /* background-color: rgba(0, 0, 0, 0.2); */
+        }
+        .hero-content { }
+        .game-logo {
+            max-width: 450px; margin: 0 auto 20px auto;
+        }
+        .tagline-text {
+            color: rgba(204, 204, 204, 0.85);
+            font-size: 1.1em;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 10px auto 0 auto;
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* Slightly stronger shadow maybe? */
+        }
+        .tagline-text span { display: block; margin-bottom: 5px; }
+
+        .game-trailer { text-align: center; padding: 40px 20px; }
+        .game-trailer h2 {
+            font-size: 1.8em; color: #e0e0e0; margin-bottom: 25px; font-weight: bold; display: inline-flex; align-items: center; background-color: #444; padding: 5px 15px; border-radius: 5px;
+        }
+        .game-trailer h2 .play-icon { margin-right: 10px; font-size: 1em; }
+        .video-placeholder-div {
+            max-width: 800px; height: 450px; margin: 0 auto; background-color: #111; border: 2px solid #555; border-radius: 5px; overflow: hidden;
+        }
+         .video-placeholder-div img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+         }
+
+        .blog-section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .blog-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #444;
+        }
+        .blog-title {
+            font-size: 1.6em; color: #e0e0e0; display: flex; align-items: center;
+        }
+        .blog-title .icon {
+            width: 24px; height: 24px; margin-right: 10px; filter: brightness(0) invert(0.8);
+        }
+        .search-form {
+            display: flex; background-color: #3a413a; border-radius: 20px; padding: 5px 5px 5px 15px; border: 1px solid #555;
+        }
+        .search-form input[type="search"] {
+            background: none; border: none; color: #ccc; outline: none; flex-grow: 1; font-size: 0.9em;
+        }
+        .search-form input[type="search"]::placeholder { color: #888; }
+        .search-form button {
+            background-color: #555; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin-left: 5px;
+        }
+        .search-form button img {
+             width: 16px; height: 16px; filter: brightness(0) invert(0.8);
+         }
+
+        .blog-posts { }
+        .blog-post {
+            background-color: #3a413a; margin-bottom: 25px; border-radius: 8px; overflow: hidden; display: flex; border: 1px solid #4a514a;
+        }
+        .post-thumbnail {
+            flex-shrink: 0; width: 200px; height: 120px; object-fit: cover;
+        }
+        .post-thumbnail-placeholder {
+            flex-shrink: 0; width: 200px; height: 120px; background-color: #556b55; display: flex; align-items: center; justify-content: center; color: #333; font-size: 0.8em; text-align: center; font-weight: bold;
+        }
+        .post-content { padding: 15px 20px; flex-grow: 1; }
+        .post-content h3 { font-size: 1.2em; color: #e0e0e0; margin-bottom: 5px; }
+        .post-date { font-size: 0.85em; color: #aaa; display: flex; align-items: center; margin-bottom: 10px; }
+        .post-date .icon {
+            width: 16px; height: 16px; margin-right: 5px; filter: brightness(0) invert(0.7);
+        }
+        .post-content p { font-size: 0.9em; margin-bottom: 15px; color: #bbb; }
+        .posted-by { font-size: 0.8em; color: #888; text-align: right; display: block; }
+
+        .site-footer-bottom {
+            background-color: #1f241f;
+            padding: 30px 0 10px 0; margin-top: 50px; border-top: 1px solid #444;
+            position: relative; /* Ensures it sits above the body background */
+            z-index: 5; /* Ensures it sits above the body background */
+        }
+        .footer-container {
+            max-width: 900px; margin: 0 auto 20px auto; padding: 0 20px; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: left;
+        }
+        .footer-col { flex-basis: 30%; min-width: 150px; margin-bottom: 20px; }
+        .footer-col h4 { font-size: 1em; color: #ccc; margin-bottom: 10px; display: flex; align-items: center; }
+        .footer-icon-placeholder {
+            display: inline-block; width: 18px; height: 18px; border: 1px solid #888; border-radius: 50%; margin-right: 8px; text-align: center; line-height: 16px; font-size: 0.8em; color: #888; font-weight: bold;
+        }
+        .footer-col a, .footer-col li { font-size: 0.9em; color: #aaa; display: block; margin-bottom: 5px; padding-left: 26px; }
+        .footer-col a:hover { color: #fff; }
+        .footer-col ul { padding-left: 26px; margin-top: -5px; }
+        .footer-col ul li { padding-left: 0; }
+        .copyright {
+            text-align: center; font-size: 0.8em; color: #777; margin-top: 20px; padding-top: 15px; border-top: 1px solid #444; max-width: 900px; margin-left: auto; margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                /* Keep default scaling for tall image */
+            }
+            .header-container { padding: 0 15px; }
+            .main-nav { display: none; }
+            .menu-icon { display: flex; }
+            .hero { height: 50vh; min-height: 350px; }
+            .game-logo { max-width: 300px; }
+            .video-placeholder-div { height: 300px; }
+            .blog-post { flex-direction: column; }
+            .post-thumbnail, .post-thumbnail-placeholder { width: 100%; height: 180px; }
+            .footer-container { flex-direction: column; align-items: center; text-align: center; }
+            .footer-col { flex-basis: 100%; margin-bottom: 25px; }
+            .footer-col h4 { justify-content: center; }
+            .footer-col a, .footer-col li, .footer-col ul { padding-left: 0; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+
+        <header class="site-header">
+            <div class="header-container">
+                <a href="#" class="header-icon home-icon">
+                     <img src="materialy/Home.svg" alt="Home">
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Media</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </nav>
+                <button class="header-icon menu-icon">
+                    <img src="materialy/Menu.svg" alt="Menu">
+                </button>
+            </div>
+        </header>
+
+        <main class="site-content">
+
+            <section class="hero">
+                <div class="hero-content">
+                    <img src="materialy/logo.png" alt="Lands Of Nobles" class="game-logo">
+                    <p class="tagline-text">
+                        <span>The world of Lands Of Nobles awaits discovery...</span>
+                        <span>Your adventure begins soon.</span>
+                    </p>
+                </div>
+            </section>
+
+            <section class="game-trailer">
+                <h2><span class="play-icon">▶</span> GAME TRAILER</h2>
+                <div class="video-placeholder-div">
+                    <img src="materialy/namioty w nocy.png" alt="Game Trailer Thumbnail">
+                </div>
+            </section>
+
+            <section class="blog-section">
+                <div class="blog-header">
+                    <h2 class="blog-title">
+                        <img src="materialy/Desk_alt.svg" alt="" class="icon">
+                         Blog
+                    </h2>
+                    <form class="search-form">
+                        <input type="search" placeholder="Search...">
+                        <button type="submit">
+                             <img src="materialy/Search_alt.svg" alt="Search">
+                        </button>
+                    </form>
+                </div>
+
+                <div class="blog-posts">
+                    <article class="blog-post">
+                        <img src="materialy/namioty w nocy.png" alt="Spring 2025 Update" class="post-thumbnail">
+                        <div class="post-content">
+                            <h3>SPRING 2025 - NEWS FROM THE FRONTLINE</h3>
+                            <span class="post-date">
+                                <img src="materialy/Date_range.svg" alt="" class="icon"> 31.02.2027
+                            </span>
+                            <p>Greetings! The first months of 2025 brought significant progress. We're intensively testing the new mechanics introduced late last year internally. Soon, we'll be ready to reveal a bit more about a certain character joining a familiar faction... Patience, nobles!</p>
+                            <span class="posted-by">post from the LON team</span>
+                        </div>
+                    </article>
+
+                    <article class="blog-post">
+                        <img src="materialy/day namiot.jpg" alt="Summer 2024 Recap" class="post-thumbnail">
+                        <div class="post-content">
+                            <h3>2024 RECAP - WHAT WE'VE ACHIEVED</h3>
+                             <span class="post-date">
+                                <img src="materialy/Date_range.svg" alt="" class="icon"> 29.02.2026
+                            </span>
+                            <p>The end of the year is a good time for summaries! In 2024, we focused on the foundations - our new engine has taken shape, and the development tools allow us to create the world of Lands Of Nobles faster than ever. We have ambitious plans for 2025, including further development of creative possibilities for players. Stay with us!</p>
+                            <span class="posted-by">post from the LON team</span>
+                        </div>
+                    </article>
+
+                     <article class="blog-post">
+                        <div class="post-thumbnail-placeholder">Concept Art<br>(Placeholder 3)</div>
+                        <div class="post-content">
+                            <h3>VISUAL PROGRESS - SUMMER 2024</h3>
+                             <span class="post-date">
+                                <img src="materialy/Date_range.svg" alt="" class="icon"> 15.04.2025
+                            </span>
+                            <p>Summer 2024 was marked by hard work on the game's appearance. Our artists are refining the unique visual style of Lands Of Nobles, from character models to vast landscapes. We're experimenting with lighting and effects to make the game world even more atmospheric. We also showed the first sketches of new regions!</p>
+                             <span class="posted-by">post from the LON team</span>
+                        </div>
+                    </article>
+
+                     <article class="blog-post">
+                        <div class="post-thumbnail-placeholder">Game Systems<br>(Placeholder 4)</div>
+                        <div class="post-content">
+                            <h3>GAMEPLAY FOUNDATIONS - EARLY 2024</h3>
+                            <span class="post-date">
+                                <img src="materialy/Date_range.svg" alt="" class="icon"> 18.03.2024
+                            </span>
+                            <p>At the beginning of 2024, we focused on key gameplay systems. Many hours were spent designing and implementing the basics of combat, crafting, and world interaction. Although it's just the beginning, we already see huge potential in the mechanics we're building. We want the world to be alive and reactive to player actions.</p>
+                            <span class="posted-by">post from the LON team</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer-bottom">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4><span class="footer-icon-placeholder">i</span> INFO</h4>
+                    <a href="#">About us</a>
+                </div>
+                <div class="footer-col">
+                     <h4><span class="footer-icon-placeholder">?</span> SUPPORT</h4>
+                    <a href="#">Report issue</a>
+                </div>
+                <div class="footer-col">
+                     <h4><span class="footer-icon-placeholder">S</span> SOCIAL</h4>
+                    <ul>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">X (Twitter)</a></li>
+                        <li><a href="#">Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+             <p class="copyright">Copyright 2025 © Logic Tower Studio. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
